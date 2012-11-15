@@ -48,6 +48,7 @@ typedef struct {
 	int lines;	/* rows per LaTeX tabular */
 	int guess;	/* guess or not the CSV format */
 	int header;	/* put LaTeX document header or not */
+	int mbare;	/* only the rows, no tabular environment or not*/
 	int escape;	/* escape TeX control chars or not */
 	char* clrrow;	/* row graylevel (from 0 to 1) */
 	texcape* tex;	/* TeX escapes */
@@ -60,6 +61,7 @@ void rtfm(char* prog) {
    printf("%s translates a csv file to a LaTeX file\n", basename(prog));
    printf("Example: %s january_stats.csv > january_stats.tex\n", basename(prog));
    printf("Usage: %s [--nohead] (LaTeX) no document header: useful for inclusion\n", basename(prog));
+   printf("Usage: %s [--mbare] (LaTeX) no tabular environment, just cols \n", basename(prog));
    printf("	[--noescape] (LaTeX) do not escape text: useful for mixed CSV/TeX input\n");
    printf("	[--guess] (CSV) guess separator and block |\n"
 		"	[--separator <(c)omma|(s)emicolon|(t)ab|s(p)ace|co(l)on>] (CSV's comma)\n"
@@ -89,6 +91,7 @@ config* parseOptions (config* conf, int argc, char **argv) {
 		{"lines",     1, NULL, 'l'},
 		{"noescape",  0, NULL, 'x'},
 		{"nohead",    0, NULL, 'n'},
+		{"mbare",     0, NULL, 'm'},
 		{"version",   0, NULL, 'v'},
 		{"position",  1, NULL, 'p'},
 		{"separator", 1, NULL, 's'},
@@ -130,6 +133,9 @@ config* parseOptions (config* conf, int argc, char **argv) {
 					break;
 			case 'n':
 					conf->header=0;
+					break;
+			case 'm':
+					conf->mbare=1;
 					break;
 			case 'x':
 					conf->escape=0;
@@ -306,7 +312,6 @@ void doTeXsub(config* conf, char newsep, FILE* in, FILE* out) {
 				numcols--;
 			}
 			fprintf(out,"\\\\\n"); /* TeX new line */
-			fprintf(out,"\\hline\n"); /* TeX draw hline */
 			numcols=max; /* reset numcols */
 			lines--;
 			/* put a colored row or not (alternate) */
@@ -399,13 +404,16 @@ void doTeXdoc(config* conf, FILE* in, FILE* out) {
 		fprintf(out,"\\relsize{-%s}\n", relsize[conf->red]);
 		fprintf(out,"\\addtolength\\tabcolsep{-%sem}\n", tabcolsep[conf->red]);
 	}
+	if (!conf->mbare){
 	fprintf(out, "\\begin{tabular}{|");
 	while(numcols--)
 		fprintf(out, "%c|",conf->pos); /* position in cell */
 	fprintf(out, "}\n");
-	fprintf(out, "\\hline\n");
+	  }
 	doTeXsub(conf, '&', in, out); /* & is LaTeX sep */
+	if (!conf->mbare){
 	fprintf(out, "\\end{tabular}\n");
+	}
 	if (conf->red){
 		fprintf(out,"\\addtolength\\tabcolsep{+%sem}\n", tabcolsep[conf->red]);
 		fprintf(out,"\\relsize{+%s}\n", relsize[conf->red]);
