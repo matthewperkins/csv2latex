@@ -1,3 +1,25 @@
+2010-04-17 (0.18)
+	* workaround when double-quotes are only on some cells (Google Docs)
+	  thanks to Florian Heinze <florian@heinze.at>
+
+2010-02-06 (0.17)
+	* added --repeatheder, --nohlines, --novlines
+	  thanks to Mathew Polzin <mpolzin@willamette.edu>
+	* updated manpage
+
+2009-09-18 (0.16)
+	* generated manpage added into source (docbook-to-man not needed)
+
+2009-08-28 (0.16)
+	* use unisgned when needed (MAXUINT = 4G on 32bits systems)
+
+2009-07-24
+	* fixed empty tabular bug when number of CSV rows matches --lines
+	* added \newline between tabulars
+
+2009-07-15 (0.15)
+	* added use of longtable package
+
 2009-04-16 (0.14)
 	* replace "$\backslash$" by "\textbackslash"
 

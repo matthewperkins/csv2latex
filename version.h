@@ -1,4 +1,4 @@
 #define PACKAGE "csv2latex"
-#define RELEASE_DATE "2009-04-16"
-#define VERSION "0.14"
+#define RELEASE_DATE "2010-04-27"
+#define VERSION "0.18"
 

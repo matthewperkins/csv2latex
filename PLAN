@@ -1,6 +1,3 @@
-fix:
---lines 0 => 2/4 Giga lines limitation to be removed (easy)
-
 future feature:
 --lines -40 (consider `-' as `less than') (not easy, would be default)
 find N so that (1) (N < 40) and (2) TOTAL%N is either 0 or maximal and (3) N is minimal)

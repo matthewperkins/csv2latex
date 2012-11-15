@@ -86,6 +86,7 @@ manpage.1: manpage.sgml
     <cmdsynopsis>
       <command>&dhpackage;</command>
 <arg><option>--nohead</option></arg>
+<arg><option>--longtable</option></arg>
 <arg><option>--noescape</option></arg>
 <arg><option>--guess</option></arg>
 <arg><option>--separator <replaceable>c</replaceable>|<replaceable>s</replaceable>|<replaceable>t</replaceable>|<replaceable>p</replaceable>|<replaceable>l</replaceable></option></arg>
@@ -94,6 +95,9 @@ manpage.1: manpage.sgml
 <arg><option>--position <replaceable>l</replaceable>|<replaceable>c</replaceable>|<replaceable>r</replaceable></option></arg>
 <arg><option>--colorrows <replaceable>0-1</replaceable></option></arg>
 <arg><option>--reduce <replaceable>1</replaceable>|<replaceable>2</replaceable>|<replaceable>3</replaceable>|<replaceable>4</replaceable></option></arg>
+<arg><option>--repeatheader</option></arg>
+<arg><option>--nohlines</option></arg>
+<arg><option>--novlines</option></arg>
 <arg>file</arg>
     </cmdsynopsis>
   </refsynopsisdiv>
@@ -155,6 +159,19 @@ manpage.1: manpage.sgml
         <listitem>
           <para>Do not output the LaTeX document header. 
                 This is useful when the output is to be included as a separate file into the master document.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-t</option>
+          <option>--longtable</option>
+        </term>
+        <listitem>
+          <para>uses the 'longtable' package instead of the 'tabular' one.
+                This is useful when the input is long, with <option>--lines 0</option> option.
+                This option uses the extra `longtable' LaTeX package.
+                If you also use <option>--nohead</option> option, do not forget to add 
+                the following line into the header of your master document: "\\usepackage{longtable}".
           </para>
         </listitem>
       </varlistentry>
@@ -258,6 +275,35 @@ manpage.1: manpage.sgml
                 This option uses the extra `relsize' LaTeX package.
                 If you also use <option>--nohead</option> option, do not forget to add 
                 the following line into the header of your master document: "\\usepackage{relsize}".
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-z</option>
+          <option>--nohlines</option>
+        </term>
+        <listitem>
+          <para>Do not output horizontal lines in the table(s).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-y</option>
+          <option>--novlines</option>
+        </term>
+        <listitem>
+          <para>Do not output vertical lines in the table(s).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-e</option>
+          <option>--repeatheader</option>
+        </term>
+        <listitem>
+          <para>Repeat the first row of the first table in every table. 
+                This is useful when the output is very long and separated in
+                multiple tables.
           </para>
         </listitem>
       </varlistentry>

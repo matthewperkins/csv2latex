@@ -5,11 +5,14 @@ thanks: Valéry Febvre <vfebvre@lautre.net>
 	Jason J. Corso <jcorso@cse.Buffalo.EDU>
 	Boaz Gezer <boaz.gezer@gmail.com>
 	Rafael Laboissiere <rafael@debian.org>
+	Cristof Bodner <Christof.Bodner@infineon.com>
+	Mathew Polzin <mpolzin@willamette.edu>
+	Florian Heinze <florian@heinze.at>
 
-homepage: http://brouits.free.fr/csv2latex/
-download: http://brouits.free.fr/csv2latex/csv2latex-0.14.tar.gz
-checkout: git://git.tuxfamily.org/gitroot/csv2latex/csv2latex.git
-browse:   http://git.tuxfamily.org/csv2latex/csv2latex
+homepage: http://herewe.servebeer.com/csv2latex/
+download: http://herewe.servebeer.com/csv2latex/releases/
+checkout: http://herewe.servebeer.com/svn//csv2latex
+browse:   http://herewe.servebeer.com/svn/csv2latex
 
 copyright: © 2003- Benoît Rouits <brouits@free.fr>
 published under license: GNU GPL version 2 (see COPYING file)

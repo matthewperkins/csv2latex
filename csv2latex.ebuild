@@ -3,8 +3,8 @@
 # $Header: $
 
 DESCRIPTION="A csv to LaTeX file converter"
-HOMEPAGE="http://brouits.free.fr/csv2latex/"
-SRC_URI="${HOMEPAGE}/${P}-0.14.tar.gz"
+HOMEPAGE="http://herewe.servebeer.com/csv2latex/"
+SRC_URI="${HOMEPAGE}/releases/${P}-0.17.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"

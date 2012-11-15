@@ -3,13 +3,12 @@ PREFIX=/usr
 BINDIR=$(PREFIX)/bin
 MANDIR=$(PREFIX)/share/man/man1
 CFLAGS=-Wall -Wextra -pedantic -Os
-GZIP=gzip --force
+GZIP=gzip --to-stdout
 all:
 	${CC} $(CFLAGS) $(PROGNAME).c -o $(PROGNAME)
-	docbook-to-man $(PROGNAME).sgml > $(PROGNAME).1
-	$(GZIP) $(PROGNAME).1
+	$(GZIP) $(PROGNAME).1 > $(PROGNAME).1.gz
 install:
-	strip $(PROGNAME)
+	strip $(PROGNAME).exe
 	install $(PROGNAME) ${DESTDIR}$(BINDIR)/$(PROGNAME)
 	install $(PROGNAME).1.gz ${DESTDIR}$(MANDIR)/$(PROGNAME).1.gz
 uninstall:
@@ -18,3 +17,4 @@ uninstall:
 clean:
 	$(RM) $(PROGNAME)
 	$(RM) $(PROGNAME).1.gz
+# vim:set ts=8 sw=8 noexpandtab et:
